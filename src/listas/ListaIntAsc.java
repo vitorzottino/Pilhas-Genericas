@@ -7,21 +7,21 @@ public class ListaIntAsc {
 		int dado;
 	}
 
-	private NodeInt lista = null;
+	private NodeInt topoLista = null;
 
 	public void insert(int elem) {
 		NodeInt newNode = new NodeInt();
 		newNode.dado = elem;
 
-		if (lista == null) {
+		if (topoLista == null) {
 			newNode.prox = null;
-			lista = newNode;
+			topoLista = newNode;
 		} else {
-			if (newNode.dado < lista.dado) {
-				newNode.prox = lista;
-				lista = newNode;
+			if (newNode.dado < topoLista.dado) {
+				newNode.prox = topoLista;
+				topoLista = newNode;
 			} else {
-				NodeInt aux = lista;
+				NodeInt aux = topoLista;
 				boolean achou = false;
 				while (aux.prox != null && !achou) {
 					if (aux.prox.dado < newNode.dado)
@@ -41,11 +41,34 @@ public class ListaIntAsc {
 	}
 
 	public void show() {
-		NodeInt aux = lista;
-		System.out.println("***** Lista *****");
+		NodeInt aux = topoLista;
+		System.out.println("***** LISTA *****");
 		while (aux != null) {
 			System.out.println("\t" + aux.dado);
 			aux = aux.prox;
+		}
+	}
+
+	public int counter() {
+		int count = 0;
+		NodeInt aux = topoLista;
+		while (aux != null) {
+			count++;
+			aux = aux.prox;
+		}
+
+		return count;
+	}
+
+	public void showTop(int limite) {
+		NodeInt aux = topoLista;
+		System.out.println("***** LISTA *****");
+		while (aux != null) {
+			if (aux.dado > limite) {
+				System.out.println("\t " + aux.dado);
+				aux = aux.prox;
+			} else
+				aux = aux.prox;
 		}
 	}
 

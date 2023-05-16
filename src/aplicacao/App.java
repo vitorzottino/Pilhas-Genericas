@@ -17,11 +17,12 @@ public class App {
 		int opcao = input.nextInt();
 
 		while (opcao > 0) {
-			lista.insert(r.nextInt(1, 100));
-			lista.show();
+			lista.insert(opcao);
+			lista.showTop(2);
 			System.out.println("Informe dado positivo para inserir ou negativo para encerrar");
 			opcao = input.nextInt();
 		}
+		System.out.println("Numero de itens na lista: " + lista.counter());
 
 		input.close();
 
